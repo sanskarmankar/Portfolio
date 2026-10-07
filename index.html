@@ -127,48 +127,56 @@
 
     <header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
     <div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
-      <div class="flex items-center gap-space-md">
-        <a class="flex items-center gap-space-sm group" data-path="career-journey" href="#">
-          <div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none group-hover:text-primary-container transition-colors">SANSKAR MANKAR</span>
-            <span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider mt-space-2xs">Quant Researcher</span>
-          </div></a><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse shadow-[0_0_8px_rgba(101,242,181,0.6)]"></span></div></div>
-          <nav
-            class="hidden md:flex items-center gap-space-lg"
-            data-active-classes="text-primary font-semibold"
-          >
-            <a
-              href="https://github.com/sanskarmankar/Portfolio/blob/main/index.html"
-              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"
-              data-path="career-journey"
-            >
-              Career Journey
+        
+        <!-- Left Side: Logo/Name -->
+        <div class="flex items-center gap-space-md">
+            <a class="flex items-center gap-space-sm group" data-path="career-journey" href="index.html">
+                <div class="flex flex-col">
+                    <span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none group-hover:text-primary-container transition-colors">SANSKAR MANKAR</span>
+                    <span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider mt-space-2xs">Quant Researcher</span>
+                </div>
             </a>
+            <div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high">
+                <span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse shadow-[0_0_8px_rgba(101,242,181,0.6)]"></span>
+            </div>
+        </div>
 
+        <!-- Navigation: Hidden on mobile, flex on medium screens -->
+        <nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-semibold">
+            <a href="index.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Career Journey</a>
             <span class="text-on-surface-variant">|</span>
-
-            <a
-              href="https://github.com/sanskarmankar/Portfolio/blob/main/project.html"
-              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"
-              data-path="projects-and-models"
-            >
-              Projects
-            </a>
-
+            <a href="project.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Projects</a>
             <span class="text-on-surface-variant">|</span>
+            <a href="contact.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Contact</a>
+        </nav>
 
-            <a
-              href="https://github.com/sanskarmankar/Portfolio/blob/main/contact.html"
-              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"
-              data-path="contact-and-terminal"
-            >
-              Contact
-            </a>
-          </nav>
+        <!-- Right Side: Socials & Mobile Toggle -->
+        <div class="flex items-center gap-space-sm">
+            <div class="flex items-center gap-space-2xs">
+                <a aria-label="GitHub Profile" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">GitHub</a>
+                <a aria-label="arXiv Publications" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">arXiv</a>
+            </div>
+            
+            <!-- MOBILE MENU BUTTON (Visible only on small screens) -->
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-on-surface-variant">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE DROPDOWN MENU -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-surface-variant px-6 py-4 flex flex-col gap-4">
+        <a href="index.html" class="text-on-surface-variant hover:text-primary">Career Journey</a>
+        <a href="project.html" class="text-on-surface-variant hover:text-primary">Projects</a>
+        <a href="contact.html" class="text-on-surface-variant hover:text-primary">Contact</a>
+    </div>
+</header>
             <div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-2xs"><a aria-label="GitHub Profile" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">
               </a><a aria-label="arXiv Publications" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">
                 </a></div><div class="h-4 w-px bg-surface-variant mx-space-2xs hidden sm:block"></div>
                 <div class="flex items-center gap-space-xs pl-space-2xs">
-                  <div class="hidden xl:flex flex-col text-left"><span class="font-code-sm text-code-sm text-on-surface leading-tight">SANSKAR MANKAR</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim leading-none"></span></div></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+                  <div class="hidden xl:flex flex-col text-left"><span class="font-code-sm text-code-sm text-on-surface leading-tight">SANSKAR MANKAR</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim leading-none"></span></div></div></div></div>
+      </header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
 <!-- Subtle Ambient Glow Orbs -->
 <div class="relative w-full overflow-hidden">
 <div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -353,7 +361,7 @@
           </p>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-space-md z-10 w-full lg:w-auto">
-<a class="w-full sm:w-auto px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-semibold rounded shadow-[0_0_24px_rgba(0,240,255,0.4)] hover:shadow-[0_0_32px_rgba(0,240,255,0.6)] hover:bg-primary transition-all flex items-center justify-center gap-space-xs" data-path="project.html" href="https://github.com/sanskarmankar/Portfolio/blob/main/project.html">
+<a class="w-full sm:w-auto px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-semibold rounded shadow-[0_0_24px_rgba(0,240,255,0.4)] hover:shadow-[0_0_32px_rgba(0,240,255,0.6)] hover:bg-primary transition-all flex items-center justify-center gap-space-xs" data-path="project.html" href="project.html">
 <span>View Quantitative Projects</span>
 <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
 </div>
