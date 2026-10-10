@@ -1,438 +1,236 @@
-<html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-<style>
-        @layer base {
-            html, body { margin: 0; padding: 0; }
-            body { overscroll-behavior: none; }
-            main > :first-child { margin-top: 0 !important; }
-            main > :last-child { margin-bottom: 0 !important; }
-        }
-        ::-webkit-scrollbar { display: none; }
-    </style>
-
-    <!-- 2. Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- 3. Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "secondary": "#89ceff",
-                        "on-secondary": "#00344d",
-                        "error": "#ffb4ab",
-                        "surface-tint": "#00dbe9",
-                        "secondary-fixed-dim": "#89ceff",
-                        "inverse-surface": "#dfe2ee",
-                        "primary-fixed": "#7df4ff",
-                        "secondary-container": "#00a2e6",
-                        "on-tertiary-fixed": "#002113",
-                        "on-primary-fixed": "#002022",
-                        "primary-fixed-dim": "#00dbe9",
-                        "secondary-fixed": "#c9e6ff",
-                        "on-surface": "#dfe2ee",
-                        "tertiary-container": "#65f2b5",
-                        "outline-variant": "#3b494b",
-                        "tertiary": "#d8ffe7",
-                        "on-tertiary-fixed-variant": "#005236",
-                        "on-secondary-container": "#00344e",
-                        "primary": "#dbfcff",
-                        "tertiary-fixed": "#6ffbbe",
-                        "surface-variant": "#31353e",
-                        "on-primary-fixed-variant": "#004f54",
-                        "on-error-container": "#ffdad6",
-                        "on-tertiary": "#003824",
-                        "on-primary": "#00363a",
-                        "tertiary-fixed-dim": "#4edea3",
-                        "surface-dim": "#0f131c",
-                        "surface-container-highest": "#31353e",
-                        "primary-container": "#00f0ff",
-                        "surface-container-high": "#262a33",
-                        "surface": "#0f131c",
-                        "on-surface-variant": "#b9cacb",
-                        "error-container": "#93000a",
-                        "on-error": "#690005",
-                        "on-secondary-fixed-variant": "#004c6e",
-                        "on-background": "#dfe2ee",
-                        "surface-container": "#1c2028",
-                        "inverse-on-surface": "#2c3039",
-                        "inverse-primary": "#006970",
-                        "on-tertiary-container": "#006d4a",
-                        "surface-container-low": "#181c24",
-                        "background": "#0f131c",
-                        "on-secondary-fixed": "#001e2f",
-                        "surface-container-lowest": "#0a0e16",
-                        "on-primary-container": "#006970",
-                        "outline": "#849495",
-                        "surface-bright": "#353942"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "gutter": "1rem",
-                        "margin": "1rem",
-                        "space-xs": "0.25rem",
-                        "margin-md": "2rem",
-                        "gutter-md": "1.5rem",
-                        "space-2xl": "3rem",
-                        "margin-lg": "3rem",
-                        "gutter-lg": "2rem",
-                        "space-lg": "1.5rem",
-                        "space-sm": "0.5rem",
-                        "space-md": "1rem",
-                        "space-2xs": "0.125rem",
-                        "space-xl": "2rem"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "code-lg": ["JetBrains Mono"],
-                        "metric-display": ["JetBrains Mono"],
-                        "display-lg-mobile": ["Plus Jakarta Sans"],
-                        "body-sm": ["Inter"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "code-md": ["JetBrains Mono"],
-                        "body-md": ["Inter"],
-                        "code-sm": ["JetBrains Mono"],
-                        "display-lg": ["Plus Jakarta Sans"],
-                        "body-lg": ["Inter"],
-                        "headline-sm": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "code-lg": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "500" }],
-                        "metric-display": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-sm": ["0.75rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
-                        "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "code-md": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
-                        "body-md": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
-                        "code-sm": ["0.6875rem", { "lineHeight": "1rem", "fontWeight": "500" }],
-                        "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
-                        "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
-                        "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
-                        "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
+<!DOCTYPE html>
+<html class="dark" lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanskar Mankar | Quantitative Researcher</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{overscroll-behavior:none}ul.b{list-style:none}ul.b li{position:relative;padding-left:1rem;margin-bottom:.4rem}ul.b li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:#00dbe9}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}details[open] .chev{transform:rotate(180deg)}</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{colors:{secondary:"#89ceff","secondary-container":"#00a2e6","secondary-fixed":"#c9e6ff",primary:"#dbfcff","primary-container":"#00f0ff","primary-fixed-dim":"#00dbe9","on-primary-container":"#006970",tertiary:"#d8ffe7","tertiary-container":"#65f2b5","tertiary-fixed":"#6ffbbe","tertiary-fixed-dim":"#4edea3","on-surface":"#dfe2ee","on-surface-variant":"#b9cacb","surface-variant":"#31353e",surface:"#0f131c","surface-container":"#1c2028","surface-container-high":"#262a33","surface-container-low":"#181c24","surface-container-lowest":"#0a0e16"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},fontFamily:{head:["Plus Jakarta Sans"],mono:["JetBrains Mono"],body:["Inter"]}}}}</script>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col text-[15px] leading-relaxed">
 
-    <header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-    <div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
-        
-        <!-- Left Side: Logo/Name -->
-        <div class="flex items-center gap-space-md">
-            <a class="flex items-center gap-space-sm group" data-path="career-journey" href="index.html">
-                <div class="flex flex-col">
-                    <span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none group-hover:text-primary-container transition-colors">SANSKAR MANKAR</span>
-                    <span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider mt-space-2xs">Quant Researcher</span>
-                </div>
-            </a>
-            <div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high">
-                <span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse shadow-[0_0_8px_rgba(101,242,181,0.6)]"></span>
-            </div>
-        </div>
-
-        <!-- Navigation: Hidden on mobile, flex on medium screens -->
-        <nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-semibold">
-            <a href="index.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Career Journey</a>
-            <span class="text-on-surface-variant">|</span>
-            <a href="project.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Projects</a>
-            <span class="text-on-surface-variant">|</span>
-            <a href="contact.html" class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors">Contact</a>
-        </nav>
-
-        <!-- Right Side: Socials & Mobile Toggle -->
-        <div class="flex items-center gap-space-sm">
-            <div class="flex items-center gap-space-2xs">
-
-            </div>
-            
-            <!-- MOBILE MENU BUTTON (Visible only on small screens) -->
-            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-on-surface-variant">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- MOBILE DROPDOWN MENU -->
-    <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-surface-variant px-6 py-4 flex flex-col gap-4">
-        <a href="index.html" class="text-on-surface-variant hover:text-primary">Career Journey</a>
-        <a href="project.html" class="text-on-surface-variant hover:text-primary">Projects</a>
-        <a href="contact.html" class="text-on-surface-variant hover:text-primary">Contact</a>
-    </div>
+<header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl">
+ <div class="h-16 max-w-6xl mx-auto px-6 flex items-center justify-between">
+  <a href="index.html" class="flex flex-col leading-none">
+   <span class="font-head font-semibold text-primary tracking-tight">SANSKAR MANKAR</span>
+   <span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider mt-1">Quant Researcher</span>
+  </a>
+  <nav class="hidden md:flex items-center gap-6 text-sm">
+   <a href="index.html" class="text-primary font-semibold">Career Journey</a>
+   <a href="project.html" class="text-on-surface-variant hover:text-on-surface">Projects</a>
+   <a href="contact.html" class="text-on-surface-variant hover:text-on-surface">Contact</a>
+  </nav>
+  <button aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('hidden')" class="md:hidden p-2 text-on-surface-variant"><span class="material-symbols-outlined">menu</span></button>
+ </div>
+ <div id="mm" class="hidden md:hidden bg-surface border-t border-surface-variant px-6 py-4 flex flex-col gap-4">
+  <a href="index.html" class="text-on-surface-variant">Career Journey</a><a href="project.html" class="text-on-surface-variant">Projects</a><a href="contact.html" class="text-on-surface-variant">Contact</a>
+ </div>
 </header>
-            <div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-2xs"><a aria-label="GitHub Profile" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">
-              </a><a aria-label="arXiv Publications" class="p-space-xs rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" href="#">
-                </a></div><div class="h-4 w-px bg-surface-variant mx-space-2xs hidden sm:block"></div>
-                <div class="flex items-center gap-space-xs pl-space-2xs">
-                  <div class="hidden xl:flex flex-col text-left"><span class="font-code-sm text-code-sm text-on-surface leading-tight">SANSKAR MANKAR</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim leading-none"></span></div></div></div></div>
-      </header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
-<!-- Subtle Ambient Glow Orbs -->
-<div class="relative w-full overflow-hidden">
-<div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
-<div class="absolute top-80 right-10 w-80 h-80 bg-secondary-container/10 rounded-full blur-[100px] pointer-events-none"></div>
-<!-- 1. Hero Strategy Deck & Bio Header -->
-<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-8 pb-12">
-<!-- Top Meta Eyebrow -->
-<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
-<div class="flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high">
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-<span class="font-code-sm text-code-sm text-primary">PORTFOLIO </span>
-</div>
-<div class="flex items-center gap-space-sm font-code-sm text-code-sm text-on-surface-variant">
-<span class="flex items-center gap-space-2xs text-tertiary">
-<span class="material-symbols-outlined text-[14px]"></span> India markets and Crypto currency trading experience
-          </span>
-<span class="text-surface-variant"><br></span>
-<span><br></span>
-</div>
-</div>
-<!-- Main Asymmetric Hero Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-<div class="lg:col-span-8 flex flex-col gap-space-md">
-<h1 class="font-display-lg text-display-lg text-primary tracking-tight leading-tight">
-            From AI/ML Engineer to <span class="text-secondary-fixed">Quantitative Researcher</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
-            Synthesising Market data and research papers, python infrastructure to make alpha from MFT Trading strategies. A deliberate pivot from raw data engineering to mathematical modelling, transforming data into statistical edge and meaningful signals.
-          </p>
-<!-- Core Competency Badges -->
-<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
-<span class="px-space-sm py-space-2xs rounded bg-surface-container text-primary font-code-sm text-code-sm">Python</span>
-<span class="px-space-sm py-space-2xs rounded bg-surface-container text-secondary font-code-sm text-code-sm">Statistical Analysis</span>
-<span class="px-space-sm py-space-2xs rounded bg-surface-container text-tertiary-fixed font-code-sm text-code-sm">Machine Learning</span>
-<span class="px-space-sm py-space-2xs rounded bg-surface-container text-on-surface font-code-sm text-code-sm">Numpy</span>
-<span class="px-space-sm py-space-2xs rounded bg-surface-container text-primary-fixed-dim font-code-sm text-code-sm">PyTorc</span></div></div>
-<!-- Portrait placeholder: replace the image file/source with your own passport-size photo later -->
-<div class="lg:col-span-4 flex justify-center lg:justify-end items-start mt-space-md lg:mt-0">
-  <div class="relative w-56 sm:w-64 lg:w-full max-w-sm">
+
+<main class="flex-1 pt-16">
+<!-- HERO -->
+<section class="relative overflow-hidden">
+ <div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+ <div class="max-w-6xl mx-auto px-6 pt-10 pb-12 grid lg:grid-cols-12 gap-8 items-center">
+  <div class="lg:col-span-8 flex flex-col gap-5">
+   <h1 class="font-head font-bold text-4xl sm:text-5xl leading-tight tracking-tight text-primary">From AI/ML Engineer to <span class="text-secondary-fixed">Quantitative Researcher</span></h1>
+   <p class="text-lg text-on-surface-variant max-w-2xl">I turn market data into statistically robust trading signals. Indian indices and crypto.</p>
+   <div class="flex flex-wrap gap-2 font-mono text-xs">
+    <span class="px-2 py-1 rounded bg-surface-container text-primary">Python</span>
+    <span class="px-2 py-1 rounded bg-surface-container text-secondary">Statistical Analysis</span>
+    <span class="px-2 py-1 rounded bg-surface-container text-tertiary-fixed">Machine Learning</span>
+    <span class="px-2 py-1 rounded bg-surface-container text-on-surface">NumPy</span>
+    <span class="px-2 py-1 rounded bg-surface-container text-primary-fixed-dim">PyTorch</span>
+   </div>
+   <!-- Headline numbers -->
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+    <div class="bg-surface-container-low rounded-xl p-4"><div class="font-mono font-bold text-2xl text-primary">3.21</div><div class="text-xs text-on-surface-variant">Sharpe · BTST, NIFTY 50</div></div>
+    <div class="bg-surface-container-low rounded-xl p-4"><div class="font-mono font-bold text-2xl text-primary">31%</div><div class="text-xs text-on-surface-variant">CAGR · Intraday, NIFTY 50</div></div>
+    <div class="bg-surface-container-low rounded-xl p-4"><div class="font-mono font-bold text-2xl text-primary">6+</div><div class="text-xs text-on-surface-variant">Sharpe · BTC Hawkes</div></div>
+    <div class="bg-surface-container-low rounded-xl p-4"><div class="font-mono font-bold text-2xl text-primary">300+</div><div class="text-xs text-on-surface-variant">Equities screened</div></div>
+   </div>
+   <p class="text-xs text-on-surface-variant">All figures are historical backtests, not live performance.</p>
+  </div>
+  <div class="lg:col-span-4 flex justify-center lg:justify-end">
+   <div class="relative w-56 sm:w-64 lg:w-full max-w-sm">
     <div class="absolute -inset-3 rounded-2xl bg-primary-container/10 blur-xl pointer-events-none"></div>
-    <div class="relative overflow-hidden rounded-2xl border border-primary-container/30 bg-surface-container-low shadow-[0_0_32px_rgba(0,240,255,0.10)] aspect-[3/4]">
-      <img
-        src="images/my_potrate_photo.jpg.jpeg"
-        alt="Temporary portrait placeholder — replace with Sanskar's photo"
-        class="w-full h-full object-cover object-center"
-        loading="lazy"
-      />
-      <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-surface/95 via-surface/40 to-transparent p-4 pt-12">
-        <p class="font-code-sm text-code-sm uppercase tracking-wider text-primary">AI/ML · Quant Research</p>
+    <div class="relative overflow-hidden rounded-2xl border border-primary-container/30 bg-surface-container-low aspect-[3/4]">
+     <img src="images/my_potrate_photo.jpg.jpeg" alt="Sanskar Mankar" class="w-full h-full object-cover" loading="lazy">
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="max-w-6xl mx-auto px-6 py-12 w-full">
+ <h2 class="font-head font-semibold text-3xl mb-1">The Journey to Quant</h2>
+ <p class="text-on-surface-variant mb-8">Three phases, from building models to testing whether an edge is real.</p>
+
+ <div class="flex flex-col gap-8">
+
+  <!-- PHASE 1 -->
+  <article class="grid lg:grid-cols-12 gap-4 items-start">
+   <div class="lg:col-span-3">
+    <div class="flex items-center gap-2 mb-1"><span class="font-mono font-bold text-secondary">PHASE 01</span><span class="px-2 py-0.5 rounded bg-surface-container text-xs font-mono text-on-surface-variant">2023–24</span></div>
+    <h3 class="font-head font-semibold text-primary">AI/ML Intern → Quant</h3>
+    <div class="text-sm text-on-surface-variant">Rajyug Solutions · Pune</div>
+   </div>
+   <div class="lg:col-span-9 bg-surface-container-low rounded-xl p-6 grid md:grid-cols-2 gap-6">
+    <div>
+     <h4 class="font-mono text-xs uppercase tracking-wider text-primary mb-3">Built (AI/ML)</h4>
+     <ul class="b text-on-surface-variant">
+      <li>Fine-tuned an 8B medical Q&amp;A model, served on CUDA</li>
+      <li>FAISS RAG pipeline grounded in source PDFs</li>
+      <li>YOLOv8 helmet detection at 97% accuracy</li>
+      <li>FastAPI deployments for ML apps</li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="font-mono text-xs uppercase tracking-wider text-primary mb-3">First trading system</h4>
+     <ul class="b text-on-surface-variant">
+      <li>Intraday EMA/SMA + ADX/DMI trend strategy, built after hours</li>
+      <li>Backtest: 70% win rate, 30-pt stop, 20-pt target</li>
+      <li>Traded options with ₹20k. Account wiped after 8 months by an unhedged overnight election-day position</li>
+     </ul>
+    </div>
+    <div class="md:col-span-2 bg-surface-container rounded p-4 border-l-2 border-primary-container">
+     <div class="font-mono text-xs text-primary font-bold mb-1">LESSON</div>
+     <p class="text-on-surface">I backtested the index but traded options, where theta changed the economics. Now I backtest the exact instrument, model costs, and treat sizing and overnight risk as part of the strategy.</p>
+    </div>
+    <div class="md:col-span-2 flex flex-wrap gap-2 font-mono text-xs text-secondary"><span>python</span><span>·</span><span>pine script</span><span>·</span><span>backtesting</span><span>·</span><span>options</span></div>
+   </div>
+  </article>
+
+  <!-- PHASE 2 -->
+  <article class="grid lg:grid-cols-12 gap-4 items-start">
+   <div class="lg:col-span-3">
+    <div class="flex items-center gap-2 mb-1"><span class="font-mono font-bold text-primary">PHASE 02</span><span class="px-2 py-0.5 rounded bg-surface-container text-xs font-mono text-on-surface-variant">2024–25</span></div>
+    <h3 class="font-head font-semibold text-primary">Quantitative Researcher</h3>
+    <div class="text-sm text-on-surface-variant">Untrade · Jaipur</div>
+   </div>
+   <div class="lg:col-span-9 bg-surface-container-low rounded-xl p-6 grid md:grid-cols-2 gap-6">
+    <div>
+     <h4 class="font-mono text-xs uppercase tracking-wider text-primary mb-3">BTC Hawkes-process strategy</h4>
+     <ul class="b text-on-surface-variant">
+      <li>Detects volatility expansion and predicts direction</li>
+      <li>Backtest: 68% win rate, 1:3 risk-reward, 6+ Sharpe</li>
+      <li>Extended to Ethereum and event-driven signals</li>
+      <li>One of the top-performing strategies on Untrade</li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="font-mono text-xs uppercase tracking-wider text-primary mb-3">Research process</h4>
+     <ul class="b text-on-surface-variant">
+      <li>5-island genetic algorithm with adaptive mutation, parallelised</li>
+      <li>Look-ahead bias checks, in/out-of-sample validation, Monte Carlo tests</li>
+      <li>Automated pipeline: data → signal → backtest → validation → risk</li>
+     </ul>
+    </div>
+    <div class="md:col-span-2 grid sm:grid-cols-2 gap-4">
+     <div class="bg-surface-container rounded p-4 border-l-2 border-tertiary-fixed"><div class="font-mono text-xs text-tertiary-fixed font-bold mb-1">THESIS</div><p>Crypto's liquidation cascades fuel volatility, and volatility is where trend-following works best.</p></div>
+     <div class="bg-surface-container rounded p-4 border-l-2 border-primary-container"><div class="font-mono text-xs text-primary font-bold mb-1">SHIFT</div><p>From finding profitable strategies to testing whether an edge is robust and survives attempts to break it.</p></div>
+    </div>
+   </div>
+  </article>
+
+  <!-- PHASE 3 -->
+  <article class="grid lg:grid-cols-12 gap-4 items-start">
+   <div class="lg:col-span-3">
+    <div class="flex items-center gap-2 mb-1"><span class="font-mono font-bold text-tertiary">PHASE 03</span><span class="px-2 py-0.5 rounded bg-surface-container text-xs font-mono text-tertiary-fixed">2025–PRESENT</span></div>
+    <h3 class="font-head font-semibold text-primary">Independent Quant Researcher</h3>
+    <div class="text-sm text-on-surface-variant">Indian indices &amp; equities</div>
+   </div>
+   <div class="lg:col-span-9 bg-surface-container-low rounded-xl p-6 flex flex-col gap-6">
+    <div class="grid md:grid-cols-2 gap-4">
+     <!-- BTST -->
+     <div class="bg-surface-container rounded-xl p-5">
+      <h4 class="font-head font-semibold text-tertiary">BTST / Overnight Long-Only</h4>
+      <p class="text-sm text-on-surface-variant mb-3">Midday signal, exit at next open. NIFTY 50 backtest.</p>
+      <div class="grid grid-cols-3 gap-2 font-mono text-center">
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">22.95%</div><div class="text-[10px] text-on-surface-variant">CAGR</div></div>
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">3.21</div><div class="text-[10px] text-on-surface-variant">Sharpe</div></div>
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">−3.81%</div><div class="text-[10px] text-on-surface-variant">Max DD</div></div>
       </div>
+      <ul class="b text-sm text-on-surface-variant mt-4">
+       <li>946 trades, 59.8% win rate, 1.90 profit factor</li>
+       <li>~25% CAGR on Midcap Select, 30%+ on Next 50</li>
+       <li>Adaptable to futures and option spreads</li>
+       <li>Not viable on cash equities: costs eat the edge</li>
+      </ul>
+     </div>
+     <!-- INTRADAY -->
+     <div class="bg-surface-container rounded-xl p-5">
+      <h4 class="font-head font-semibold text-tertiary">Intraday Long/Short</h4>
+      <p class="text-sm text-on-surface-variant mb-3">Directional moves in Indian indices. NIFTY 50 backtest.</p>
+      <div class="grid grid-cols-3 gap-2 font-mono text-center">
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">31.18%</div><div class="text-[10px] text-on-surface-variant">CAGR</div></div>
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">2.86</div><div class="text-[10px] text-on-surface-variant">Sharpe</div></div>
+       <div class="bg-surface-container-lowest rounded p-2"><div class="font-bold text-primary">−6.10%</div><div class="text-[10px] text-on-surface-variant">Max DD</div></div>
+      </div>
+      <ul class="b text-sm text-on-surface-variant mt-4">
+       <li>2,365 trades, 47.1% win rate, 1.60 profit factor</li>
+       <li>1.80 win/loss payoff, ~134 min average hold</li>
+       <li>Profitable on both long and short sides</li>
+      </ul>
+     </div>
     </div>
-  </div>
-</div></div></div></div></div><div class="w-full bg-surface-container-lowest py-space-sm"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-wrap items-center justify-between gap-space-md font-code-sm text-code-sm"><div class="flex items-center gap-space-xs text-on-surface-variant">
-</div>
-</div>
-</div>
-<!-- 2. Interactive Career Evolution & Pivot Timeline -->
-<div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-2xl w-full">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-sm">
-<div>
-<span class="font-code-sm text-code-sm text-primary uppercase tracking-wider block mb-space-2xs">ARCHITECTURAL EVOLUTION</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">The Journey to Quant</h2>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-        A deliberate pivot from raw data to mathematical modelling, transforming data into statistical edge and meaningful signals.
-      </p>
-</div>
-<!-- Timeline Container -->
-<div class="relative flex flex-col gap-space-xl">
-<!-- Step 1: The Foundation -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start relative">
-<div class="lg:col-span-3 flex flex-col">
-<div class="flex items-center gap-space-xs mb-space-2xs">
-<span class="font-code-md text-code-md text-secondary font-bold">PHASE 01</span>
-<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">2023-2024</span>
-</div>
-<h4 class="font-headline-sm text-headline-sm text-primary" style="font-size: medium;">AI/ML intern to quant</h4>
-<span class="font-code-sm text-code-sm text-primary mt-space-2xs">Rajyug solutions&nbsp;</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">AI/ML Engineer • Pune ,India</span>
-</div>
-<div class="lg:col-span-9 bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<div class="md:col-span-2 flex flex-col gap-space-sm">
-<h4 class="font-headline-sm text-headline-sm text-primary">AI/ML intern to quant&nbsp;</h4>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">I build ML systems end-to-end, from model development to deployment.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><span style="font-size: 0.875rem;"><br></span></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><span style="font-size: 0.875rem;">- Fine-tuned an 8B medical Q&amp;A model and served it on CUDA.</span></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Built a FAISS-based RAG pipeline to ground responses in source PDFs.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Developed a YOLOv8 helmet detection system achieving 97% accuracy.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Built emotion classification and resume-screening systems.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Deployed ML applications through FastAPI services.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><h4 class="font-headline-sm text-headline-sm text-primary" style="font-size: medium;">My first trading system</h4><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">"By day I was a full-time intern; by evening I was building an intraday EMA/SMA &nbsp;ADX and DMI trend-following strategy for the Indian market."</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Backtest showed a 70% win rate with a 30-point stop-loss and 20-point target.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Started trading the strategy with ₹20k through options buying.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- After eight months, an unhedged overnight election-day position wiped out the account.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- The experience exposed a critical flaw: I had backtested the index but traded options, where theta and instrument-specific behaviour materially changed the economics.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Learned to backtest the actual traded instrument, model transaction costs, and treat position sizing and overnight risk as part of the strategy itself.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">"That loss taught me more about risk management than any course could."</p><div><br></div>
-<!-- The Catalyst Callout -->
-<div class="bg-surface-container rounded p-space-sm mt-space-xs">
-<span class="font-code-sm text-code-sm text-primary font-bold flex items-center gap-space-2xs mb-space-2xs">
-<span class="material-symbols-outlined text-[16px]">bolt</span> THE CATALYST: THE DETERMINISM OBSESSION
-                </span>
-<p class="font-body-sm text-body-sm text-on-surface leading-normal"><br></p>
-</div>
-</div>
-<!-- Tech Stack & Metrics Sidebar -->
-<div class="bg-surface-container-lowest p-space-md rounded flex flex-col justify-between gap-space-sm">
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-xs">CORE DELIVERABLES</span>
-<ul class="font-code-sm text-code-sm text-on-surface space-y-space-xs">
-<li class="flex items-center gap-space-xs"><span class="text-tertiary">•AI/ML engineering&nbsp;</span></li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary">• Backtesting</span></li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary">•</span>live trading&nbsp;<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary">•</span>options trading exposer&nbsp;</li>
-</ul>
-</div>
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-2xs">STACK</span>
-<font color="#89ceff" face="JetBrains Mono"><span style="font-size: 11px;">python ,&nbsp;pine script ,&nbsp;</span><span style="caret-color: rgb(137, 206, 255); font-size: 11px;">backtesting</span></font></div>
-</div>
-</div>
-</div>
-</div>
-<!-- Step 2: The Transition & Pivot -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start relative">
-<div class="lg:col-span-3 flex flex-col">
-<div class="flex items-center gap-space-xs mb-space-2xs">
-<span class="font-code-md text-code-md text-primary font-bold">PHASE 02</span>
-<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">2024 — 2025</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">The Transition: Mathematical &amp; statistical &nbsp;Foundations</h3>
-<span class="font-code-sm text-code-sm text-secondary">Untrade</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Quantitative researcher • Jaipur , India</span>
-</div>
-<div class="lg:col-span-9 bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<div class="md:col-span-2 flex flex-col gap-space-sm">
-<h4 class="font-headline-sm text-headline-sm text-secondary">Backtesting , Genetic algorithm I trading , Alpha creation&nbsp;</h4>
-<h4 class="font-headline-sm text-headline-sm text-primary" style="font-size: medium;">Quantitative Researcher - Untrade</h4><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">"My first serious experience in quantitative research began with Bitcoin, where I developed a volatility-focused alpha using Hawkes process modelling."</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Developed a BTC Hawkes-process strategy focused on detecting volatility expansion and predicting direction.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Strategy achieved 68% win rate, 1:3 risk-to-reward, and 6+ Sharpe in backtesting.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Extended research into Ethereum alpha models, event-driven signals, and systematic parameter optimisation.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Built a 5-island Genetic Algorithm with adaptive mutation and parallel evaluation using `ThreadPoolExecutor` for faster parameter exploration.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Developed research protocols for look-ahead/front-running bias detection, strict in-sample/out-of-sample validation, and Monte Carlo robustness testing.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Built automated research pipelines covering data extraction → signal generation &nbsp; &nbsp; → backtesting → validation → risk analysis.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">"This experience shifted my approach from simply finding profitable strategies to testing whether an apparent edge was statistically robust, reproducible, and capable of surviving attempts to break it."</p><div><br></div>
-<!-- Research Highlight -->
-<div class="bg-surface-container rounded p-space-sm mt-space-xs">
-<span class="font-code-sm text-code-sm text-tertiary-fixed font-bold flex items-center gap-space-2xs mb-space-2xs">
-<span class="material-symbols-outlined text-[16px]">menu_book</span> THESIS&nbsp;</span>
-<p class="font-body-sm text-body-sm text-on-surface leading-normal">
-                  "volatility creates best opportunity for trend following strategy ": the whole nature of the crypto currency market is based on mass liquidation which acts as fuel which make the market extremely volatilise thus helping the trend falling strategy to perform very well&nbsp;</p>
-</div>
-</div>
-<!-- Academic Distinction Card -->
-<div class="bg-surface-container-lowest p-space-md rounded flex flex-col justify-between gap-space-sm">
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-xs">learnings</span>
-<ul class="font-code-sm text-code-sm text-on-surface space-y-space-xs">
-<li class="flex items-center gap-space-xs"><span class="text-primary">•</span>Alpha genration&nbsp;<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-primary">•</span>volatility Clustering<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-primary">•</span>one of the best performing strategy on Untrade&nbsp;<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-primary">•</span>genetic algorithm for strategy optimization&nbsp;</li><li class="flex items-center gap-space-xs"><br></li>
-</ul>
-</div>
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-2xs"><br></span></div>
-</div>
-</div>
-</div>
-</div>
-<!-- Step 3: Current Quantitative Researcher Role -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start relative">
-<div class="lg:col-span-3 flex flex-col">
-<div class="flex items-center gap-space-xs mb-space-2xs">
-<span class="font-code-md text-code-md text-tertiary font-bold">PHASE 03</span>
-<span class="px-space-xs py-space-2xs rounded bg-surface-container text-tertiary-fixed font-code-sm text-code-sm">2025 — PRESENT</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Independent AI &amp; Quantitative Researcher</h3>
-<span class="font-code-sm text-code-sm text-tertiary"><br></span>
-<span class="font-body-sm text-body-sm text-on-surface-variant"><br></span>
-</div>
-<div class="lg:col-span-9 bg-surface-container-low rounded-xl p-space-lg shadow-xl flex flex-col gap-space-md">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<div class="md:col-span-2 flex flex-col gap-space-sm">
-<div class="flex items-center gap-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-tertiary">Index trading strategy , screening strategy ,crypto currency strategy&nbsp;</h4></div><h4 class="font-headline-sm text-headline-sm text-primary" style="font-size: medium;">Quantitative and Systematic &nbsp;Researcher&nbsp;</h4><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">I independently research and backtest systematic trading strategies across</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">&nbsp;""Indian equity indices, equities"", with a focus on identifying repeatable market behaviour and validating it under realistic trading assumptions.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">1. BTST / Overnight Long-Only Strategy</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">A systematic ""long-only BTST strategy"" designed to identify overnight gap opportunities from midday-session signals and exit at the following session's open. The strategy has been tested across ""NIFTY 50, NIFTY Midcap Select, NIFTY Next 50, and other Indian indices"".</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">NIFTY 50 backtest:</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">946 trades | 59.8% win rate</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">22.95% CAGR</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">3.21 Sharpe | 6.20 Sortino</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">1.90 Profit Factor</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">-3.81% Maximum Drawdown</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">6.63% annualized volatility</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">1.28 average win/loss payoff ratio</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">The strategy has produced approximately ""25% CAGR on NIFTY Midcap Select and 30%+ CAGR on NIFTY Next 50"" in historical backtests.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">The underlying signal can potentially be adapted to ""index futures, directional option selling(credit spreads), and overnight option &nbsp;buying strategies"". I also tested the strategy across other Indian indices; however, on cash equities, the average trade return is not consistently large enough to overcome overnight transaction costs.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">&nbsp;2. Intraday Directional Strategy</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">A systematic ""long/short intraday strategy"" designed to capture directional moves in Indian indices. The same framework has been tested across ""NIFTY 50, NIFTY Midcap Select, NIFTY Next 50, and other Indian indices"".</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">NIFTY 50 backtest:</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">2,365 trades | 47.1% win rate</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">31.18% CAGR</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">2.86 Sharpe | 5.98 Sortino</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">1.60 Profit Factor</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">-6.10% Maximum Drawdown</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">1.80 average win/loss payoff ratio</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">9.83% annualised volatility</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">~134 minuets average holding time</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">The strategy remains profitable on both sides of the market, with long and short trades contributing independently to the overall result.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">&nbsp;Research &amp; Infrastructure</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Alongside strategy development, I build my own quantitative research infrastructure for:</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Event-driven backtesting</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Realistic transaction-cost modelling</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Look-ahead bias prevention</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Out-of-sample and walk-forward testing</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Monte Carlo robustness analysis</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Parameter-stability testing</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Large-scale OHLCV screening across ""300+ equities""</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">- Statistical and time-series signal research</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">My focus is not simply maximising backtest returns, but determining whether an apparent ""market edge is repeatable, statistically meaningful, and robust across instruments and market regimes"".</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">""Current research:"" stock swing-trading systems and BTC options strategies.</p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">&gt; ""Note:"" All performance figures above are from historical backtests and do not represent live or deployed trading performance.</p><div><br></div><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><br></p>
-</div>
-<!-- Strategy Architecture Card -->
-<div class="bg-surface-container-lowest p-space-md rounded flex flex-col justify-between gap-space-sm">
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-xs">learnigs&nbsp;</span>
-<ul class="font-code-sm text-code-sm text-on-surface space-y-space-xs">
-<li class="flex items-center gap-space-xs"><span class="text-tertiary-fixed">•</span> Cross-Asset trading</li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary-fixed">•</span>Backtesting System<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary-fixed">•</span>strategy with lot of rules is just overfitting&nbsp;<br></li>
-<li class="flex items-center gap-space-xs"><span class="text-tertiary-fixed"><br></span></li>
-</ul>
-</div>
-<div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider block mb-space-2xs"><br></span></div></div></div></div></div></div></div>
-<!-- 4. Prominent Call-to-Action Section: Explore Projects -->
-<div class="w-full bg-gradient-to-b from-surface-container-low to-surface py-space-2xl">
-<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-xl">
-<!-- Glow Banner Card -->
-<div class="relative bg-surface-container rounded-xl p-space-xl shadow-2xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-space-lg">
-<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container/15 rounded-full blur-[100px] pointer-events-none"></div>
-<div class="flex flex-col gap-space-xs max-w-2xl z-10">
-<div class="flex items-center gap-space-xs">
-<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-<span class="font-code-sm text-code-sm text-primary uppercase tracking-wider font-semibold">PRODUCTION REPOSITORIES &amp; SIMULATORS</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
-            Explore Selected Quantitative Projects &amp; Models
-          </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-            Dive into production-validated backtests and strategy optimisation techniques &nbsp;fully documented mathematics.
-          </p>
-</div>
-<div class="flex flex-col sm:flex-row items-center gap-space-md z-10 w-full lg:w-auto">
-<a class="w-full sm:w-auto px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-semibold rounded shadow-[0_0_24px_rgba(0,240,255,0.4)] hover:shadow-[0_0_32px_rgba(0,240,255,0.6)] hover:bg-primary transition-all flex items-center justify-center gap-space-xs" data-path="project.html" href="project.html">
-<span>View Quantitative Projects</span>
-<span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
-</div>
-</div>
-<!-- Preview Strip of the 3 Flagship Projects -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<!-- Project Preview 1 -->
-<a class="group bg-surface-container-low p-space-md rounded-xl shadow-md hover:bg-surface-container-high transition-all flex flex-col justify-between" data-path="projects-and-models" href="project/project_1.html">
-  <div class="flex flex-col gap-space-xs">
-    <div class="flex items-center justify-between text-code-sm font-code-sm">
-      <!-- SET TO BLUE -->
-      <span class="text-primary font-semibold">PROJECT // 01</span>
-      <span class="text-tertiary"><br></span>
-    </div>
-    <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Index gap up prediction strategy&nbsp;</h3>
-    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">A systematic long only strategy &nbsp;to capitalise on market gaps ,this strategy can be used for directional option selling , option buying and futures trading&nbsp;</p>
-  </div>
-  <div class="flex items-center justify-between pt-space-sm font-code-sm text-code-sm text-on-surface-variant">
-    <span>pine script , NIFTY trading strategy&nbsp;</span>
-    <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">north_east</span>
-  </div>
-</a>
 
-<!-- Project Preview 2 -->
-<a class="group bg-surface-container-low p-space-md rounded-xl shadow-md hover:bg-surface-container-high transition-all flex flex-col justify-between" data-path="projects-and-models" href="project/project_2.html">
-  <div class="flex flex-col gap-space-xs">
-    <div class="flex items-center justify-between text-code-sm font-code-sm">
-      <!-- SET TO BLUE -->
-      <span class="text-primary font-semibold">PROJECT // 02</span> 
-      <span class="text-tertiary"><br></span>
-    </div>
-    <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Volatility clustering trading strategy&nbsp;</h3>
-    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">A real time trading strategy with mathematical approach to use Hawks process for event clustering ,it was one of the best strategy which was performing live for Untrade&nbsp;</p>
-  </div>
-  <div class="flex items-center justify-between pt-space-sm font-code-sm text-code-sm text-on-surface-variant">
-    <span>Python ,crypto currency&nbsp;</span>
-    <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">north_east</span>
-  </div>
-</a>
+    <details class="bg-surface-container rounded-xl">
+     <summary class="flex items-center justify-between p-4 font-mono text-sm text-primary">Research infrastructure<span class="material-symbols-outlined chev transition-transform">expand_more</span></summary>
+     <ul class="b px-5 pb-4 grid sm:grid-cols-2 gap-x-6 text-sm text-on-surface-variant">
+      <li>Event-driven backtesting</li><li>Realistic transaction costs</li><li>Look-ahead bias prevention</li><li>Walk-forward and out-of-sample tests</li>
+      <li>Monte Carlo robustness</li><li>Parameter-stability tests</li><li>OHLCV screening, 300+ equities</li><li>Time-series signal research</li>
+     </ul>
+    </details>
 
-<!-- Project Preview 3 -->
-<a class="group bg-surface-container-low p-space-md rounded-xl shadow-md hover:bg-surface-container-high transition-all flex flex-col justify-between" data-path="projects-and-models" href="project/project_3.html">
-  <div class="flex flex-col gap-space-xs">
-    <div class="flex items-center justify-between text-code-sm font-code-sm">
-      <!-- SET TO BLUE -->
-      <span class="text-primary font-semibold">PROJECT // 03</span>
-      <span class="text-tertiary"><br></span>
+    <div class="grid sm:grid-cols-2 gap-4 text-sm">
+     <div><span class="font-mono text-xs text-primary font-bold">NOW RESEARCHING</span><p class="text-on-surface-variant mt-1">Stock swing-trading systems · BTC options strategies</p></div>
+     <div><span class="font-mono text-xs text-primary font-bold">KEY LEARNING</span><p class="text-on-surface-variant mt-1">A strategy with lots of rules is usually overfitting.</p></div>
     </div>
-    <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-tertiary-fixed transition-colors">Intraday event clustering strategy&nbsp;</h3>
-    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">A systematic strategy to capitalise on daily price movement where this strategy was initially designed for intraday but can be used for overnight positioning &nbsp;</p>
+    <p class="text-xs text-on-surface-variant">Note: all figures are historical backtests, not live or deployed performance.</p>
+   </div>
+  </article>
+ </div>
+</section>
+
+<!-- CTA + PROJECTS -->
+<section class="w-full bg-gradient-to-b from-surface-container-low to-surface py-12">
+ <div class="max-w-6xl mx-auto px-6 flex flex-col gap-8">
+  <div class="relative bg-surface-container rounded-xl p-8 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6">
+   <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container/15 rounded-full blur-[100px] pointer-events-none"></div>
+   <div class="z-10">
+    <h2 class="font-head font-semibold text-2xl text-primary">Selected quantitative projects</h2>
+    <p class="text-on-surface-variant">Backtests, methods and the maths behind them.</p>
+   </div>
+   <a href="project.html" class="z-10 w-full sm:w-auto px-6 py-3 bg-primary-container text-on-primary-container font-head font-semibold rounded shadow-[0_0_24px_rgba(0,240,255,0.4)] hover:bg-primary transition-all flex items-center justify-center gap-2"><span>View projects</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
   </div>
-  <div class="flex items-center justify-between pt-space-sm font-code-sm text-code-sm text-on-surface-variant">
-    <span>Python, NIFTY 50 ,intraday ,market analysis</span>
-    <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">north_east</span>
+  <div class="grid md:grid-cols-3 gap-4">
+   <a href="project/project_1.html" class="group bg-surface-container-low p-5 rounded-xl hover:bg-surface-container-high transition-all flex flex-col gap-2">
+    <span class="font-mono text-xs text-primary font-semibold">PROJECT 01</span>
+    <h3 class="font-head font-semibold group-hover:text-primary">Index gap-up strategy</h3>
+    <p class="text-sm text-on-surface-variant">Long-only overnight gap capture. Fits futures and options.</p>
+    <span class="font-mono text-xs text-on-surface-variant mt-auto pt-2">Pine Script · NIFTY</span>
+   </a>
+   <a href="project/project_2.html" class="group bg-surface-container-low p-5 rounded-xl hover:bg-surface-container-high transition-all flex flex-col gap-2">
+    <span class="font-mono text-xs text-primary font-semibold">PROJECT 02</span>
+    <h3 class="font-head font-semibold group-hover:text-secondary">Volatility clustering strategy</h3>
+    <p class="text-sm text-on-surface-variant">Hawkes-process event clustering on BTC. Ran live on Untrade.</p>
+    <span class="font-mono text-xs text-on-surface-variant mt-auto pt-2">Python · Crypto</span>
+   </a>
+   <a href="project/project_3.html" class="group bg-surface-container-low p-5 rounded-xl hover:bg-surface-container-high transition-all flex flex-col gap-2">
+    <span class="font-mono text-xs text-primary font-semibold">PROJECT 03</span>
+    <h3 class="font-head font-semibold group-hover:text-tertiary-fixed">Intraday event clustering</h3>
+    <p class="text-sm text-on-surface-variant">Daily price-move strategy, adaptable to overnight holds.</p>
+    <span class="font-mono text-xs text-on-surface-variant mt-auto pt-2">Python · NIFTY 50</span>
+   </a>
   </div>
-</a>
-<div class="flex items-center justify-between pt-space-sm font-code-sm text-code-sm text-on-surface-variant">
-<span>Python &nbsp;• NumPy&nbsp;<span style="font-size: 0.6875rem;">• Pandas&nbsp;</span><span style="font-size: 0.6875rem;">• Pine script&nbsp;</span></span></div></div></div></div></main><footer class="w-full bg-surface-container-lowest"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl flex flex-col gap-space-lg"><div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md pt-space-xs"><div class="flex flex-col gap-space-2xs"><p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">Quantitative research models, backtests, and algorithms presented are for theoretical review and computational demonstration only.</p></div><div class="flex items-center gap-space-md font-code-sm text-code-sm text-on-surface-variant"><span class="flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[14px] text-tertiary"><br></span></span></div></div></div></footer></body></html>
+ </div>
+</section>
+</main>
+
+<footer class="bg-surface-container-lowest">
+ <div class="max-w-6xl mx-auto px-6 py-6 text-xs text-on-surface-variant">Models and backtests are shown for theoretical review and demonstration only.</div>
+</footer>
+</body></html>
