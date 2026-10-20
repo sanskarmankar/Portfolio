@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overnight drift (BTST) on NIFTY 50 | Sanskar Mankar</title>
+<meta name="description" content="Long-only buy-today-sell-tomorrow NIFTY 50 strategy capturing overnight drift: 23.0% CAGR, Sharpe 3.21, max drawdown -3.8% (backtest).">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Overnight drift (BTST) on NIFTY 50">
+<meta property="og:description" content="Long-only buy-today-sell-tomorrow NIFTY 50 strategy capturing overnight drift: 23.0% CAGR, Sharpe 3.21, max drawdown -3.8% (backtest).">
+<meta property="og:url" content="https://sanskarmankar.github.io/Portfolio/project/project_1.html">
+<meta property="og:image" content="https://sanskarmankar.github.io/Portfolio/assets/img/chart-btst.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0d13">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+ <div class="wrap">
+  <a class="brand" href="../index.html"><b>Sanskar Mankar</b><span>Quant Researcher</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav id="nav" class="nav" aria-label="Main">
+   <a href="../project.html" aria-current="page">Projects</a>
+   <a href="../project/option-lab.html">Option Lab</a>
+   <a href="../index.html#journey">Journey</a>
+   <a href="../contact.html">Contact</a>
+   <a class="btn btn-primary btn-sm" href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </nav>
+ </div>
+</header>
+<main id="main">
+<div class="p-hero">
+ <div class="wrap">
+  <a class="crumb" href="../project.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>All projects</a>
+  <div class="chips" style="margin-bottom:16px"><span class="chip accent"><span class=dot></span>Overnight · Long only</span><span class="chip">NIFTY 50</span><span class="chip">Python · Pine Script</span></div>
+  <h1>Overnight drift (BTST) on NIFTY 50</h1>
+  <p class="lead">A long-only buy-today, sell-tomorrow strategy built on one observation: in Indian indices, most of the move happens overnight, not during the session.</p>
+  <div class="facts"><span>Instrument <b>NIFTY 50 index</b></span><span>Style <b>Overnight, long only</b></span><span>Entry / exit <b>Midday → next open</b></span><span>Period <b>2020 – 2026</b></span><span>Frequency <b>~12 trades / month</b></span></div>
+ </div>
+</div>
+
+<div class="wrap">
+ <figure class="card figure"><img src="../assets/img/chart-btst.webp" alt="Equity curve of the BTST strategy against NIFTY 50 buy and hold, 2020 to 2026, with drawdown panel" width="1190" height="690" fetchpriority="high"><figcaption>Equity curve and drawdown from the backtest. Click to enlarge.</figcaption></figure>
+ <div class="big-metrics"><div class="card"><div class="v pos">22.95%</div><div class="k">CAGR</div><div class="s">+3,647 pts / year</div></div><div class="card"><div class="v neg">−3.81%</div><div class="k">Max drawdown</div><div class="s">−805.38 pts</div></div><div class="card"><div class="v ">3.21</div><div class="k">Sharpe ratio</div><div class="s">6.63% volatility</div></div><div class="card"><div class="v pos">280.2%</div><div class="k">Total return</div><div class="s">+23,576 pts</div></div></div>
+</div>
+
+<section style="padding-bottom:40px">
+ <div class="wrap two-col" style="align-items:start">
+  <div class="prose"><h2>Thesis</h2><p>It's often said that Indian indices make their move overnight. I tested it by splitting returns in two: one backtest buys every open and sells the same close; the other holds from the close to the next open.</p>
+<p>The intraday curve was flat and random. The overnight curve rose with the index. The real move happens overnight, and a simple trend filter on top of that split became this strategy.</p></div>
+  <div class="prose"><h2>Does it generalise?</h2>
+<ul>
+ <li><b>Other indices, same rules:</b> about 25% CAGR on NIFTY Midcap Select and 30%+ on NIFTY Next 50.</li>
+ <li><b>Cash equities:</b> I screened 300+ stocks. The edge exists, but delivery costs eat it, so the strategy is scoped to index instruments.</li>
+ <li><b>Long only by design:</b> all 946 trades are long; there is no short side to flatter the numbers.</li>
+</ul></div>
+ </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:40px">
+ <div class="wrap">
+  <div class="card panel"><h3>How I would trade it</h3><p>Best expressed as a <b>vertical debit spread</b>: capped downside, positive delta, and the short leg offsets part of the theta. Buying options outright also works, but bleeds on flat openings. Futures carry the full delta, so one gap against the position can be large.</p></div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Full statistics</h2><p>Backtest figures, net of modelled costs. Not live performance.</p></div></div>
+  <div class="stats"><div class="card"><h3>Performance</h3><dl><div class="row"><dt>CAGR</dt><dd>22.95%<small>+3,647 pts / year</small></dd></div><div class="row"><dt>Total return</dt><dd>280.19%<small>+23,576.14 pts</small></dd></div><div class="row"><dt>Sharpe</dt><dd>3.21<small>Volatility 6.63%</small></dd></div><div class="row"><dt>Sortino</dt><dd>6.20</dd></div><div class="row"><dt>Calmar</dt><dd>6.03<small>CAGR / max DD</small></dd></div><div class="row"><dt>Max drawdown</dt><dd>−3.81%<small>−805.38 pts</small></dd></div><div class="row"><dt>Longest drawdown</dt><dd>85 days</dd></div></dl></div><div class="card"><h3>Trade efficiency</h3><dl><div class="row"><dt>Trades</dt><dd>946<small>12.2 per month</small></dd></div><div class="row"><dt>Win rate</dt><dd>59.8%<small>566 / 946</small></dd></div><div class="row"><dt>Profit factor</dt><dd>1.90</dd></div><div class="row"><dt>Payoff ratio</dt><dd>1.28<small>+0.503% / −0.393%</small></dd></div><div class="row"><dt>Average trade</dt><dd>+0.143%<small>24.92 pts</small></dd></div></dl></div><div class="card"><h3>Distribution</h3><dl><div class="row"><dt>Long trades</dt><dd>946<small>100% of trades</small></dd></div><div class="row"><dt>Short trades</dt><dd>0<small>Long-only strategy</small></dd></div><div class="row"><dt>Largest win</dt><dd>+3.561%<small>+802.55 pts</small></dd></div><div class="row"><dt>Largest loss</dt><dd>−3.059%<small>−419.45 pts</small></dd></div></dl></div></div>
+  <div style="margin-top:48px"><div class="pager"><a class="card" href="project_2.html"><small>← Previous</small><b>Hawkes intraday momentum on NIFTY 50</b></a><a class="card next" href="project_3.html"><small>Next →</small><b>Hawkes volatility breakout on BTC</b></a></div></div>
+ </div>
+</section>
+</main>
+<footer class="site-footer">
+ <div class="wrap">
+  <span>© 2026 Sanskar Mankar · Backtests are shown for research demonstration, not investment advice.</span>
+  <nav aria-label="Footer"><a href="../project.html">Projects</a><a href="../contact.html">Contact</a><a href="https://github.com/sanskarmankar" target="_blank" rel="noopener">GitHub</a><a href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
+ </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Sanskar Mankar</title>
+<meta name="description" content="Quantitative research projects by Sanskar Mankar: Option Lab backtesting engine, Hawkes intraday momentum on NIFTY indices, overnight BTST drift and a BTC volatility strategy.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects | Sanskar Mankar">
+<meta property="og:description" content="Option Lab, Hawkes intraday momentum on NIFTY indices, overnight BTST drift and a BTC volatility strategy.">
+<meta property="og:url" content="https://sanskarmankar.github.io/Portfolio/project.html">
+<meta property="og:image" content="https://sanskarmankar.github.io/Portfolio/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0d13">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+ <div class="wrap">
+  <a class="brand" href="index.html"><b>Sanskar Mankar</b><span>Quant Researcher</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav id="nav" class="nav" aria-label="Main">
+   <a href="project.html" aria-current="page">Projects</a>
+   <a href="project/option-lab.html">Option Lab</a>
+   <a href="index.html#journey">Journey</a>
+   <a href="contact.html">Contact</a>
+   <a class="btn btn-primary btn-sm" href="Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </nav>
+ </div>
+</header>
+
+<main id="main">
+<div class="p-hero">
+ <div class="wrap">
+  <div class="eyebrow">Research</div>
+  <h1>Projects</h1>
+  <p class="lead">One research tool and four strategies. Each page covers the thesis, the method, how I'd trade it and the full backtest statistics.</p>
+ </div>
+</div>
+
+<section style="padding-top:8px">
+ <div class="wrap">
+  <a class="card feature" href="project/option-lab.html">
+   <div class="media shot"><img src="assets/img/ol-results.webp" alt="Option Lab results screen with KPI cards and equity curve" width="1600" height="1192" fetchpriority="high"></div>
+   <div class="body">
+    <div class="chips"><span class="chip accent"><span class="dot"></span>Tooling · Open source</span><span class="chip">NIFTY options</span></div>
+    <h3>Option Lab: options backtesting engine</h3>
+    <p>Prices multi-leg option strategies from 1-minute chain data with real charges, slippage, stops and linked exits. Includes a parallel optimiser, a portfolio combiner and Monte Carlo drawdowns. Case study: Hawkes momentum option selling.</p>
+    <div class="metrics">
+     <div class="metric"><div class="v pos">33.3%</div><div class="k">CAGR, case study</div></div>
+     <div class="metric"><div class="v neg">−10.9%</div><div class="k">Max DD</div></div>
+     <div class="metric"><div class="v">1,255</div><div class="k">Days of data</div></div>
+     <div class="metric"><div class="v">~125×</div><div class="k">Cache speed-up</div></div>
+    </div>
+    <div class="foot"><span class="link-arrow">Explore Option Lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+   </div>
+  </a>
+
+  <a class="card feature" href="project/project_4.html">
+   <div class="media"><img src="assets/img/chart-niftyjr.webp" alt="NIFTY Next 50 intraday strategy equity curve against buy and hold" width="1189" height="690" loading="lazy"></div>
+   <div class="body">
+    <div class="chips"><span class="chip accent"><span class="dot"></span>Intraday · Long/Short</span><span class="chip">NIFTY Next 50</span></div>
+    <h3>Hawkes intraday momentum on NIFTY Next 50</h3>
+    <p>Trades only when a Hawkes-intensity filter detects a volatility burst. Built on NIFTY 50 and carried over unchanged to the higher-beta Next 50, where it performed better.</p>
+    <div class="metrics">
+     <div class="metric"><div class="v pos">46.6%</div><div class="k">CAGR</div></div>
+     <div class="metric"><div class="v">3.83</div><div class="k">Sharpe</div></div>
+     <div class="metric"><div class="v neg">−4.2%</div><div class="k">Max DD</div></div>
+     <div class="metric"><div class="v">2,325</div><div class="k">Trades</div></div>
+    </div>
+    <div class="foot"><span class="link-arrow">Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+   </div>
+  </a>
+
+  <div class="grid grid-3" style="margin-top:20px">
+   <a class="card pcard" href="project/project_2.html">
+    <div class="thumb"><img src="assets/img/chart-nifty50.webp" alt="NIFTY 50 intraday strategy equity curve" width="1190" height="690" loading="lazy"></div>
+    <div class="body">
+     <div class="chips"><span class="chip">Intraday</span><span class="chip">NIFTY 50</span></div>
+     <h3>Hawkes intraday momentum on NIFTY 50</h3>
+     <p>Stay out of sideways markets; ride the trend only when volatility deviates enough to signal a real move.</p>
+     <div class="metrics three">
+      <div class="metric"><div class="v pos">31.7%</div><div class="k">CAGR</div></div>
+      <div class="metric"><div class="v">2.91</div><div class="k">Sharpe</div></div>
+      <div class="metric"><div class="v neg">−5.9%</div><div class="k">Max DD</div></div>
+     </div>
+    </div>
+   </a>
+   <a class="card pcard" href="project/project_1.html">
+    <div class="thumb"><img src="assets/img/chart-btst.webp" alt="NIFTY 50 BTST strategy equity curve" width="1190" height="690" loading="lazy"></div>
+    <div class="body">
+     <div class="chips"><span class="chip">Overnight</span><span class="chip">NIFTY 50</span></div>
+     <h3>Overnight drift (BTST) on NIFTY 50</h3>
+     <p>Most of the Indian index move happens overnight. Long only: buy midday, exit at the next open.</p>
+     <div class="metrics three">
+      <div class="metric"><div class="v pos">23.0%</div><div class="k">CAGR</div></div>
+      <div class="metric"><div class="v">3.21</div><div class="k">Sharpe</div></div>
+      <div class="metric"><div class="v neg">−3.8%</div><div class="k">Max DD</div></div>
+     </div>
+    </div>
+   </a>
+   <a class="card pcard" href="project/project_3.html">
+    <div class="thumb"><img src="assets/img/chart-btc.webp" alt="BTC Hawkes strategy equity curve" width="1189" height="490" loading="lazy"></div>
+    <div class="body">
+     <div class="chips"><span class="chip">Crypto</span><span class="chip">BTC</span></div>
+     <h3>Hawkes volatility breakout on BTC</h3>
+     <p>Liquidation cascades cluster volatility. Ran live on Untrade, and taught me what overfitting costs.</p>
+     <div class="metrics three">
+      <div class="metric"><div class="v pos">75%</div><div class="k">CAGR</div></div>
+      <div class="metric"><div class="v">3.2</div><div class="k">Sharpe</div></div>
+      <div class="metric"><div class="v neg">−16%</div><div class="k">Max DD</div></div>
+     </div>
+    </div>
+   </a>
+  </div>
+  <p class="note">All figures are historical backtests, not live performance.</p>
+ </div>
+</section>
+</main>
+
+<footer class="site-footer">
+ <div class="wrap">
+  <span>© 2026 Sanskar Mankar · Backtests are shown for research demonstration, not investment advice.</span>
+  <nav aria-label="Footer"><a href="project.html">Projects</a><a href="contact.html">Contact</a><a href="https://github.com/sanskarmankar" target="_blank" rel="noopener">GitHub</a><a href="Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
+ </div>
+</footer>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

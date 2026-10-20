@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawkes volatility breakout on BTC | Sanskar Mankar</title>
+<meta name="description" content="Hawkes-process BTC strategy trading volatility clusters from liquidation cascades. Ran live on Untrade; lessons on overfitting.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hawkes volatility breakout on BTC">
+<meta property="og:description" content="Hawkes-process BTC strategy trading volatility clusters from liquidation cascades. Ran live on Untrade; lessons on overfitting.">
+<meta property="og:url" content="https://sanskarmankar.github.io/Portfolio/project/project_3.html">
+<meta property="og:image" content="https://sanskarmankar.github.io/Portfolio/assets/img/chart-btc.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0d13">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+ <div class="wrap">
+  <a class="brand" href="../index.html"><b>Sanskar Mankar</b><span>Quant Researcher</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav id="nav" class="nav" aria-label="Main">
+   <a href="../project.html" aria-current="page">Projects</a>
+   <a href="../project/option-lab.html">Option Lab</a>
+   <a href="../index.html#journey">Journey</a>
+   <a href="../contact.html">Contact</a>
+   <a class="btn btn-primary btn-sm" href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </nav>
+ </div>
+</header>
+<main id="main">
+<div class="p-hero">
+ <div class="wrap">
+  <a class="crumb" href="../project.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>All projects</a>
+  <div class="chips" style="margin-bottom:16px"><span class="chip accent"><span class=dot></span>Crypto</span><span class="chip">BTC</span><span class="chip">Hawkes process</span></div>
+  <h1>Hawkes volatility breakout on BTC</h1>
+  <p class="lead">Crypto moves come after volatility spikes from mass liquidations. This strategy clusters that volatility with a Hawkes process and trades the breakout.</p>
+  <div class="facts"><span>Instrument <b>BTC</b></span><span>Style <b>Directional, volatility-filtered</b></span><span>Sample <b>~300 trades</b></span><span>Live <b>Untrade, 2024 – 25</b></span><span>Built with <b>Python</b></span></div>
+ </div>
+</div>
+
+<div class="wrap">
+ <figure class="card figure"><img src="../assets/img/chart-btc.webp" alt="Compounded equity curve of the BTC strategy by trade number with drawdown shading" width="1189" height="490" fetchpriority="high"><figcaption>Equity curve and drawdown from the backtest. Click to enlarge.</figcaption></figure>
+ <div class="big-metrics"><div class="card"><div class="v pos">75%</div><div class="k">CAGR</div><div class="s">Backtest</div></div><div class="card"><div class="v neg">−16%</div><div class="k">Max drawdown</div><div class="s">Backtest</div></div><div class="card"><div class="v ">3.2</div><div class="k">Sharpe ratio</div><div class="s">Backtest</div></div><div class="card"><div class="v pos">1,555%</div><div class="k">Total return</div><div class="s">Backtest</div></div></div>
+</div>
+
+<section style="padding-bottom:40px">
+ <div class="wrap two-col" style="align-items:start">
+  <div class="prose"><h2>Thesis</h2><p>Liquidation cascades make crypto volatility cluster: one forced sale triggers the next. I modelled the high–low range relative to volatility as a self-exciting (Hawkes) process to separate volatile sessions, where directional trades work, from sideways ones.</p>
+<p>The same framework was later extended to Ethereum and to event-driven signals.</p></div>
+  <div class="prose"><h2>What went wrong live</h2><div class="callout warn"><b>Lesson</b>The strategy ran live on Untrade and ranked among the platform's best performers for a while. But I had overfitted it: the live drawdown breached its limit, and I stopped it. Every strategy since has had to pass out-of-sample, walk-forward and Monte Carlo tests before I trust it.</div></div>
+ </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:40px">
+ <div class="wrap">
+  <div class="card panel"><h3>How I would trade it</h3><p>With BTC options now available, the signal suits <b>long straddles</b> around extreme-volatility events, with strict sizing: 1% of equity at risk per trade.</p></div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Full statistics</h2><p>Backtest figures, net of modelled costs. Not live performance.</p></div></div>
+  <div class="stats two"><div class="card"><h3>Performance</h3><dl><div class="row"><dt>CAGR</dt><dd>75%</dd></div><div class="row"><dt>Total return</dt><dd>1,555%</dd></div><div class="row"><dt>Sharpe</dt><dd>3.2</dd></div><div class="row"><dt>Sortino</dt><dd>8</dd></div><div class="row"><dt>Max drawdown</dt><dd>−16%</dd></div><div class="row"><dt>Longest drawdown</dt><dd>112 days</dd></div></dl></div><div class="card"><h3>Trade efficiency</h3><dl><div class="row"><dt>Win rate</dt><dd>50%</dd></div><div class="row"><dt>Profit factor</dt><dd>2.12</dd></div><div class="row"><dt>Average trade</dt><dd>+1%</dd></div><div class="row"><dt>Largest win</dt><dd>+25.76%</dd></div><div class="row"><dt>Largest loss</dt><dd>−11%</dd></div></dl></div></div>
+  <div style="margin-top:48px"><div class="pager"><a class="card" href="project_1.html"><small>← Previous</small><b>Overnight drift (BTST) on NIFTY 50</b></a><a class="card next" href="option-lab.html"><small>Next →</small><b>Option Lab: options backtesting engine</b></a></div></div>
+ </div>
+</section>
+</main>
+<footer class="site-footer">
+ <div class="wrap">
+  <span>© 2026 Sanskar Mankar · Backtests are shown for research demonstration, not investment advice.</span>
+  <nav aria-label="Footer"><a href="../project.html">Projects</a><a href="../contact.html">Contact</a><a href="https://github.com/sanskarmankar" target="_blank" rel="noopener">GitHub</a><a href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
+ </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

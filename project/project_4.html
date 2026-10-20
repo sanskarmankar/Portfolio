@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawkes intraday momentum on NIFTY Next 50 | Sanskar Mankar</title>
+<meta name="description" content="Intraday long/short NIFTY Next 50 strategy using a Hawkes-intensity volatility filter: 46.6% CAGR, Sharpe 3.83, max drawdown -4.2% (backtest).">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hawkes intraday momentum on NIFTY Next 50">
+<meta property="og:description" content="Intraday long/short NIFTY Next 50 strategy using a Hawkes-intensity volatility filter: 46.6% CAGR, Sharpe 3.83, max drawdown -4.2% (backtest).">
+<meta property="og:url" content="https://sanskarmankar.github.io/Portfolio/project/project_4.html">
+<meta property="og:image" content="https://sanskarmankar.github.io/Portfolio/assets/img/chart-niftyjr.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0d13">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+ <div class="wrap">
+  <a class="brand" href="../index.html"><b>Sanskar Mankar</b><span>Quant Researcher</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav id="nav" class="nav" aria-label="Main">
+   <a href="../project.html" aria-current="page">Projects</a>
+   <a href="../project/option-lab.html">Option Lab</a>
+   <a href="../index.html#journey">Journey</a>
+   <a href="../contact.html">Contact</a>
+   <a class="btn btn-primary btn-sm" href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </nav>
+ </div>
+</header>
+<main id="main">
+<div class="p-hero">
+ <div class="wrap">
+  <a class="crumb" href="../project.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>All projects</a>
+  <div class="chips" style="margin-bottom:16px"><span class="chip accent"><span class=dot></span>Intraday · Long/Short</span><span class="chip">NIFTY Next 50</span><span class="chip">Hawkes process</span></div>
+  <h1>Hawkes intraday momentum on NIFTY Next 50</h1>
+  <p class="lead">An intraday long/short strategy that trades only when volatility bursts. I built it on NIFTY 50, then ran the same rules on the higher-beta NIFTY Next 50, where it performed even better.</p>
+  <div class="facts"><span>Instrument <b>NIFTY Next 50 index</b></span><span>Style <b>Intraday long/short</b></span><span>Period <b>2019 – 2025</b></span><span>Avg hold <b>152 min</b></span><span>Built with <b>Python</b></span></div>
+ </div>
+</div>
+
+<div class="wrap">
+ <figure class="card figure"><img src="../assets/img/chart-niftyjr.webp" alt="Equity curve of the strategy against NIFTY Next 50 buy and hold, 2019 to 2025, with drawdown panel" width="1189" height="690" fetchpriority="high"><figcaption>Equity curve and drawdown from the backtest. Click to enlarge.</figcaption></figure>
+ <div class="big-metrics"><div class="card"><div class="v pos">46.56%</div><div class="k">CAGR</div><div class="s">Buy & hold 14.25%</div></div><div class="card"><div class="v neg">−4.24%</div><div class="k">Max drawdown</div><div class="s">Buy & hold −36.17%</div></div><div class="card"><div class="v ">3.83</div><div class="k">Sharpe ratio</div><div class="s">Buy & hold 0.80</div></div><div class="card"><div class="v pos">1,261%</div><div class="k">Total return</div><div class="s">Buy & hold 148%</div></div></div>
+</div>
+
+<section style="padding-bottom:40px">
+ <div class="wrap two-col" style="align-items:start">
+  <div class="prose"><h2>Thesis</h2><p>Volatility bursts bring directional moves. When activity on an index suddenly clusters, the move that follows tends to persist; when activity is flat, price action is mostly noise.</p>
+<p>The edge first showed up on <a href="project_2.html">NIFTY 50</a>. Because the idea feeds on volatility, the natural test was a more volatile index with the <b>same rules and no re-tuning</b>. On NIFTY Next 50 every headline number improved. That is evidence the signal is structural rather than fitted to one series.</p></div>
+  <div class="prose"><h2>Method</h2>
+<ol>
+ <li><b>Bar energy.</b> Each bar's range is normalised by its recent volatility and squared, so a bar scores high only when it is unusually active <i>for that moment</i>.</li>
+ <li><b>Hawkes intensity.</b> Energy feeds an exponential-decay accumulator, <code>λ<sub>t</sub> = κ · Σ e<sup>−κ(t−s)</sup> x<sub>s</sub></code>. Bursts of activity excite λ; quiet bars let it decay.</li>
+ <li><b>Trade the jump.</b> A position opens only when the change in λ exceeds a threshold taken from an expanding quantile of the day so far. The threshold never sees future bars.</li>
+ <li><b>Direction and exit.</b> A trend filter sets long or short; an ATR-based bracket with a trailing stop manages the exit.</li>
+</ol></div>
+ </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:40px">
+ <div class="wrap">
+  <div class="card panel"><h3>How I would trade it</h3><p>The statistics support trading it through index futures or ETFs, depending on a desk's preference for leverage and liquidity. Both sides contribute: shorts and longs each have a positive Sharpe on their own.</p></div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Full statistics</h2><p>Backtest figures, net of modelled costs. Not live performance.</p></div></div>
+  <div class="stats"><div class="card"><h3>Performance</h3><dl><div class="row"><dt>CAGR</dt><dd>46.56%<small>Benchmark 14.25%</small></dd></div><div class="row"><dt>Total return</dt><dd>1,261.29%<small>Benchmark 148.43%</small></dd></div><div class="row"><dt>Sharpe</dt><dd>3.83<small>Benchmark 0.80</small></dd></div><div class="row"><dt>Sortino</dt><dd>8.96</dd></div><div class="row"><dt>Calmar</dt><dd>10.98<small>CAGR / max DD</small></dd></div><div class="row"><dt>Max drawdown</dt><dd>−4.24%<small>Benchmark −36.17%</small></dd></div><div class="row"><dt>Longest drawdown</dt><dd>69 days</dd></div></dl></div><div class="card"><h3>Trade efficiency</h3><dl><div class="row"><dt>Trades</dt><dd>2,325<small>~26.3 per month</small></dd></div><div class="row"><dt>Win rate</dt><dd>50.5%<small>1,173 / 2,324</small></dd></div><div class="row"><dt>Profit factor</dt><dd>1.83</dd></div><div class="row"><dt>Payoff ratio</dt><dd>1.79<small>+0.503% / −0.271%</small></dd></div><div class="row"><dt>Average trade</dt><dd>+0.114%</dd></div><div class="row"><dt>Average hold</dt><dd>152 min</dd></div></dl></div><div class="card"><h3>Long vs short</h3><dl><div class="row"><dt>Long trades</dt><dd>987<small>Win 54.2% · Sharpe 2.14</small></dd></div><div class="row"><dt>Short trades</dt><dd>1,290<small>Win 46.1% · Sharpe 2.67</small></dd></div><div class="row"><dt>Largest win</dt><dd>+8.947%</dd></div><div class="row"><dt>Largest loss</dt><dd>−2.057%</dd></div></dl></div></div>
+  <div style="margin-top:48px"><div class="pager"><a class="card" href="option-lab.html"><small>← Previous</small><b>Option Lab: options backtesting engine</b></a><a class="card next" href="project_2.html"><small>Next →</small><b>Hawkes intraday momentum on NIFTY 50</b></a></div></div>
+ </div>
+</section>
+</main>
+<footer class="site-footer">
+ <div class="wrap">
+  <span>© 2026 Sanskar Mankar · Backtests are shown for research demonstration, not investment advice.</span>
+  <nav aria-label="Footer"><a href="../project.html">Projects</a><a href="../contact.html">Contact</a><a href="https://github.com/sanskarmankar" target="_blank" rel="noopener">GitHub</a><a href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
+ </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

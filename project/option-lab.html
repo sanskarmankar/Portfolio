@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Option Lab: options backtesting engine | Sanskar Mankar</title>
+<meta name="description" content="Option Lab prices multi-leg NIFTY option strategies from 1-minute option-chain data with real charges, slippage, stops, linked exits, a parallel optimiser and Monte Carlo drawdowns. Case study: Hawkes momentum option selling.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Option Lab: options backtesting engine">
+<meta property="og:description" content="Multi-leg NIFTY option backtests on 1-minute chain data, with real costs and Monte Carlo risk. Case study: Hawkes momentum option selling.">
+<meta property="og:url" content="https://sanskarmankar.github.io/Portfolio/project/option-lab.html">
+<meta property="og:image" content="https://sanskarmankar.github.io/Portfolio/assets/img/ol-results.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0d13">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+ <div class="wrap">
+  <a class="brand" href="../index.html"><b>Sanskar Mankar</b><span>Quant Researcher</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav id="nav" class="nav" aria-label="Main">
+   <a href="../project.html">Projects</a>
+   <a href="option-lab.html" aria-current="page">Option Lab</a>
+   <a href="../index.html#journey">Journey</a>
+   <a href="../contact.html">Contact</a>
+   <a class="btn btn-primary btn-sm" href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </nav>
+ </div>
+</header>
+
+<main id="main">
+<div class="p-hero">
+ <div class="wrap">
+  <a class="crumb" href="../project.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>All projects</a>
+  <div class="chips" style="margin-bottom:16px"><span class="chip accent"><span class="dot"></span>Tooling · Open source</span><span class="chip">NIFTY options</span><span class="chip">Python · Streamlit</span></div>
+  <h1>Option Lab: an options backtesting engine for NIFTY</h1>
+  <p class="lead">Feed it a signal log, or just a daily entry time. It builds multi-leg option strategies and prices every leg from 1-minute option-chain data, with exchange charges, slippage, stops, trailing stops and linked exits. Then it tells you how fragile the result is.</p>
+  <div class="btn-row" style="margin-bottom:22px">
+   <a class="btn btn-primary" href="https://github.com/sanskarmankar/Options-backtesting-engine-" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>View code on GitHub</a>
+   <a class="btn btn-ghost" href="#case-study">Read the case study</a>
+  </div>
+  <div class="facts">
+   <span>Data <b>1,255 trading days, 1-min bars</b></span>
+   <span>Period <b>Jan 2021 – May 2026</b></span>
+   <span>Code <b>~4,600 lines of Python</b></span>
+   <span>Stack <b>pandas · NumPy · Plotly · Streamlit</b></span>
+  </div>
+ </div>
+</div>
+
+<div class="wrap">
+ <figure class="card figure shot"><img src="../assets/img/ol-results.webp" alt="Option Lab results screen showing net profit, costs, win rate, profit factor, drawdown and CAGR cards above an equity curve compared with NIFTY buy and hold" width="1600" height="1192" fetchpriority="high"><figcaption>Results for the momentum option-selling case study: costs broken out, CAGR on margin, and the equity curve against NIFTY buy-and-hold on the same capital.</figcaption></figure>
+</div>
+
+<!-- WHY -->
+<section style="padding-bottom:40px">
+ <div class="wrap two-col" style="align-items:start">
+  <div class="prose">
+   <h2>Why I built it</h2>
+   <p>My first trading account was wiped out because I backtested the <i>index</i> but traded <i>options</i>. Theta, strike choice and expiry changed the economics completely, and my backtest couldn't see any of it.</p>
+   <p>Option Lab closes that gap. A signal is only as good as the instrument you express it with, so every idea gets tested on the real option chain, at the real strike, with the real costs, before I trust it.</p>
+  </div>
+  <div class="prose">
+   <h2>What it does</h2>
+   <ul>
+    <li><b>Entries</b> from any signal CSV (LONG/SHORT, entry, exit, stop) or fixed daily times, with up to N re-entries a day</li>
+    <li><b>Legs:</b> buy/sell, call/put, ATM/ITMn/OTMn strikes, current or next expiry, mirrored legs for the opposite signal</li>
+    <li><b>Risk per leg:</b> stop-loss, take-profit and trailing stop in % or points; <b>linked exits</b> close the whole structure when one leg stops</li>
+    <li><b>Filters:</b> premium and implied-volatility conditions, days-to-expiry selection</li>
+    <li><b>Analysis:</b> year × month P&amp;L, weekday and DTE splits, Monte Carlo drawdowns, rolling returns, expiry payoff diagram</li>
+    <li><b>Optimiser</b> grid search and a <b>combiner</b> that merges strategies into one portfolio</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="divider">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Architecture</h2><p>The engine, analytics and optimiser have no UI imports, so they run headless in scripts and tests. Streamlit is only the front end.</p></div></div>
+  <div class="pipeline">
+   <div class="card stage"><div class="n">01 · INPUT</div><h3>Signals</h3><ul><li>Trade-log CSV or time-based entries</li><li>Validation of every row</li><li><code>engine.validate_trade_log</code></li></ul></div>
+   <div class="card stage"><div class="n">02 · DATA</div><h3>Chain store</h3><ul><li>1-min option chain per day</li><li>Binary day cache keyed on file size + mtime</li><li>Expiry calendar inferred from the data</li></ul></div>
+   <div class="card stage"><div class="n">03 · SIMULATE</div><h3>Leg engine</h3><ul><li>Strike resolution from spot</li><li>Minute-by-minute SL / TP / trailing</li><li>Linked exits, re-entries, skips logged</li></ul></div>
+   <div class="card stage"><div class="n">04 · COST</div><h3>Charges</h3><ul><li>STT (rate by date), exchange, SEBI</li><li>Stamp duty, GST, brokerage</li><li>Slippage on every fill</li></ul></div>
+   <div class="card stage"><div class="n">05 · ANALYSE</div><h3>Analytics</h3><ul><li>KPIs, CAGR on margin</li><li>Monte Carlo DD, rolling returns</li><li>Parallel optimiser, combiner</li></ul></div>
+  </div>
+  <div class="grid grid-3" style="margin-top:20px">
+   <div class="card panel"><h3>~125× faster reruns</h3><p>Parsing day CSVs dominated runtime. Caching each day's minute bars as a binary file cut a 150-trade, 4-leg backtest from about 25 s to about 0.2 s, with identical results.</p></div>
+   <div class="card panel"><h3>Parallel optimiser</h3><p>Every combination of strike, stop, target, trailing stop, premium/IV filter and entry time runs across worker processes, up to 80,000 combinations, then is ranked by risk-adjusted metrics.</p></div>
+   <div class="card panel"><h3>Honest about gaps</h3><p>When data is missing, a trade is skipped and the reason is counted, never filled with a guess. The results page shows every skip: "519 × no week file for that date".</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="case-study" class="divider">
+ <div class="wrap">
+  <div class="eyebrow">Case study</div>
+  <div class="section-head" style="margin-top:-6px"><div><h2>Momentum option selling on Hawkes signals</h2><p>A directional signal from a Hawkes process on NIFTY, expressed by selling an in-the-money option, and backtested end to end in Option Lab.</p></div></div>
+
+  <div class="two-col" style="align-items:start">
+   <div class="prose">
+    <h3 style="margin-top:0">The thesis</h3>
+    <p>Hawkes (self-exciting) processes are widely used to model how market activity clusters: one burst makes the next more likely. The model itself is well known. What differs between desks is the formulation, the thesis and the trading style built on top.</p>
+    <p>My choice is to <b>ride momentum</b>. When the intensity of activity on the index jumps, a move is underway, and I trade in its direction.</p>
+    <h3>The signal</h3>
+    <div class="formula">
+     <span class="c">// bar energy: range relative to recent volatility</span><br>
+     x<sub>t</sub> = (range<sub>t</sub> / σ<sub>t</sub>)²<br>
+     <span class="c">// exponential-kernel Hawkes intensity</span><br>
+     λ<sub>t</sub> = κ · Σ<sub>s≤t</sub> e<sup>−κ(t−s)</sup> · x<sub>s</sub><br>
+     <span class="c">// trade when the jump beats the day-so-far quantile</span><br>
+     |Δλ<sub>t</sub>| &gt; Q<sub>q</sub>( |Δλ| from today's open … t )
+    </div>
+   </div>
+   <div class="prose">
+    <h3 style="margin-top:0">The trade</h3>
+    <ul>
+     <li><b>Long signal:</b> sell 1 lot of the ITM2 put. <b>Short signal:</b> the mirrored ITM2 call.</li>
+     <li>An in-the-money short option has high delta in the direction of the move, and theta works <i>for</i> the position instead of against it.</li>
+     <li>20% stop-loss on premium; otherwise exit when the signal exits.</li>
+    </ul>
+    <h3>Why the backtest can be trusted</h3>
+    <ul>
+     <li><b>No look-ahead:</b> the signal is built on a single timeframe from closed bars. The threshold is an expanding quantile from the day's open, so it never sees later bars.</li>
+     <li><b>No fill leakage:</b> the option fills at the next minute's open after the signal bar closes. Stops fill at the minute the index actually hit the stop.</li>
+     <li><b>Fixed signal log:</b> Option Lab replays the signals exactly as generated; nothing is re-tuned on option P&amp;L.</li>
+    </ul>
+   </div>
+  </div>
+
+  <!-- interactive -->
+  <div class="card demo" style="margin-top:28px">
+   <div class="section-head" style="margin-bottom:14px"><div><h3 style="font-size:19px">Try it: how the intensity filter picks trades</h3><p style="font-size:14.5px">Simulated prices with occasional volatility bursts, 4 sessions. Raise κ for a faster-decaying, more reactive intensity; raise the quantile to be pickier. This illustrates the mechanics only; it is not the production signal or real data.</p></div>
+    <button class="btn btn-ghost btn-sm" id="hk-new" type="button">New random market</button></div>
+   <div class="demo-controls">
+    <label>Decay κ: <output id="hk-kappa-v">0.30</output><input id="hk-kappa" type="range" min="0.05" max="1" step="0.05" value="0.3"></label>
+    <label>Threshold quantile: <output id="hk-q-v">90th</output><input id="hk-q" type="range" min="70" max="99" step="1" value="90"></label>
+   </div>
+   <svg id="hk-svg" viewBox="0 0 900 372" role="img" aria-label="Three stacked panels: simulated price with signal markers, Hawkes intensity, and intensity jumps against a threshold"></svg>
+   <div class="legend"><span><i style="background:#5cc8f5"></i>Intensity λ</span><span><i style="background:#f87171"></i>Intraday quantile threshold</span><span><i style="background:#fbbf24"></i>Jump that triggers a trade</span><span><b id="hk-count" class="mono" style="color:var(--text)">0</b> signals</span></div>
+  </div>
+
+  <!-- results -->
+  <h3 style="font-size:21px;margin:44px 0 16px">Results vs. NIFTY buy-and-hold on the same ₹2,00,000</h3>
+  <div class="big-metrics" style="margin-top:0">
+   <div class="card"><div class="v pos">33.3%</div><div class="k">CAGR on margin</div><div class="s">NIFTY 10.3%</div></div>
+   <div class="card"><div class="v neg">−10.9%</div><div class="k">Max drawdown</div><div class="s">NIFTY −29.3%</div></div>
+   <div class="card"><div class="v">1.49</div><div class="k">Profit factor</div><div class="s">45.9% win rate</div></div>
+   <div class="card"><div class="v">1,698</div><div class="k">Trades</div><div class="s">of 2,217 signals</div></div>
+  </div>
+  <div class="table-wrap" style="margin-top:16px">
+   <table class="data">
+    <thead><tr><th></th><th>Net P&amp;L (₹)</th><th>Return on margin</th><th>CAGR</th><th>Max drawdown (₹)</th></tr></thead>
+    <tbody>
+     <tr class="hl"><td>Momentum option selling</td><td class="pos">+7,40,548</td><td>370.3%</td><td>33.3%</td><td class="neg">−21,735 (10.9%)</td></tr>
+     <tr><td>NIFTY buy &amp; hold</td><td>+1,38,521</td><td>69.3%</td><td>10.3%</td><td class="neg">−58,578 (29.3%)</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="note">Jan 2021 – May 2026. 1 lot (65), ₹2,00,000 margin. Average win ₹2,899 vs. average loss ₹1,652; average trade ₹436. Costs total ₹60,576 (charges ₹26,769 + slippage ₹33,808 at 0.10% of premium per fill), about 8% of gross P&amp;L. Brokerage set to zero; at ₹20 per order the net would be ₹6,72,628. 519 signals fell on dates missing from the option dataset and were skipped, not filled.</p>
+
+  <!-- monte carlo -->
+  <div class="two-col" style="margin-top:36px;align-items:start">
+   <div class="prose">
+    <h3 style="margin-top:0">Plan for the drawdown you haven't seen yet</h3>
+    <p>The realised max drawdown was about 10% of margin. That is one ordering of history. Option Lab reshuffles the daily P&amp;L 5,000 times to see how deep the same trades could have gone in a different order.</p>
+    <p>The answer: a <b>27% drawdown sits at the 95th percentile</b>, more than twice what the backtest showed. That is the number I'd size this strategy on, and it is why the case study is reported per lot, not leveraged up.</p>
+   </div>
+   <div class="table-wrap">
+    <table class="data" style="min-width:0">
+     <thead><tr><th>Monte Carlo (5,000 runs)</th><th>Max DD (₹)</th><th>% of margin</th></tr></thead>
+     <tbody>
+      <tr><td>Actual history (daily)</td><td>20,353</td><td>10.2%</td></tr>
+      <tr><td>Median</td><td>35,966</td><td>18.0%</td></tr>
+      <tr class="hl"><td>95th percentile</td><td>54,322</td><td>27.2%</td></tr>
+      <tr><td>99th percentile</td><td>65,904</td><td>33.0%</td></tr>
+      <tr><td>Worst of 5,000</td><td>1,03,452</td><td>51.7%</td></tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+
+  <div class="gallery" style="margin-top:36px">
+   <figure class="card figure shot"><img src="../assets/img/ol-yearmonth.webp" alt="Year by month net P&L table from 2021 to 2026, plus strategy versus NIFTY buy and hold comparison" width="1600" height="1077" loading="lazy"><figcaption>Year × month P&amp;L: positive every year, with December the only weak month across the sample.</figcaption></figure>
+   <figure class="card figure shot"><img src="../assets/img/ol-byday.webp" alt="Results by weekday and by days to expiry tables" width="1600" height="1024" loading="lazy"><figcaption>Profit factor above 1 on every weekday and every days-to-expiry bucket (4 DTE is near breakeven): the edge isn't a single expiry-day effect.</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<!-- STRATEGY LIBRARY -->
+<section class="divider">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Strategy library</h2><p>Strategies built and saved in Option Lab, all on the same data, the same cost model and 1 lot of 65.</p></div></div>
+  <div class="table-wrap">
+   <table class="data">
+    <thead><tr><th>Strategy</th><th>Margin (₹)</th><th>Net P&amp;L (₹)</th><th>CAGR</th><th>Max DD (₹)</th><th>Profit factor</th><th>Trades</th><th>Net at ₹20 / order</th></tr></thead>
+    <tbody>
+     <tr class="hl"><td>Momentum option selling<br><small class="faint">Hawkes signals · sell ITM2 put / call · 20% SL</small></td><td>2,00,000</td><td class="pos">7,40,548</td><td>33.3%</td><td class="neg">21,735</td><td>1.49</td><td>1,698</td><td>6,72,628</td></tr>
+     <tr><td>9:16 short straddle<br><small class="faint">Sell ITM1 call + put · 10% SL, trailing · ≤2/day</small></td><td>5,00,000</td><td class="pos">6,31,205</td><td>16.4%</td><td class="neg">28,600</td><td>1.55</td><td>1,771</td><td>4,89,525</td></tr>
+     <tr><td>Time-based iron condor<br><small class="faint">Sell OTM3, buy OTM10 wings · linked 50% SL · IV &amp; premium filters</small></td><td>2,00,000</td><td class="pos">2,23,951</td><td>15.0%</td><td class="neg">8,243</td><td>2.40</td><td>755</td><td>1,03,151</td></tr>
+     <tr><td>Combined: condor + momentum<br><small class="faint">One portfolio, common period</small></td><td>4,00,000</td><td class="pos">9,57,735</td><td>25.5%</td><td class="neg">20,719</td><td>1.59</td><td>2,217</td><td>–</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="note">The last column is my estimate of flat ₹20 brokerage on every entry and exit order (trades × legs × 2). Multi-leg, high-frequency structures feel it most: the condor keeps less than half its profit. The combined portfolio's drawdown is lower than the momentum strategy's alone, on twice the capital.</p>
+ </div>
+</section>
+
+<!-- GALLERY -->
+<section class="divider">
+ <div class="wrap">
+  <div class="section-head"><div><h2>Inside the app</h2><p>Click any screen to enlarge.</p></div></div>
+  <div class="gallery">
+   <figure class="card figure shot"><img src="../assets/img/ol-legs.webp" alt="Leg editor with action, option type, signal side, expiry, strike, linked exit, take profit, stop loss, trailing stop, premium and IV conditions" width="1600" height="1077" loading="lazy"><figcaption>Leg builder: strike, expiry, stops, trailing, linked exits, premium and IV filters per leg.</figcaption></figure>
+   <figure class="card figure shot"><img src="../assets/img/ol-entries.webp" alt="Entries tab describing the trade log CSV columns and example rows" width="1600" height="1144" loading="lazy"><figcaption>Entries: any signal log with a documented schema, or fixed daily times.</figcaption></figure>
+   <figure class="card figure shot"><img src="../assets/img/ol-optimizer.webp" alt="Optimizer tab with strike values and stop loss values selected to vary" width="1600" height="1006" loading="lazy"><figcaption>Optimiser: tick a parameter, list values, and every combination is backtested in parallel and ranked.</figcaption></figure>
+   <figure class="card figure shot"><img src="../assets/img/ol-combined.webp" alt="Combined strategies page showing a portfolio of iron condor and momentum strategies with equity curve" width="1600" height="839" loading="lazy"><figcaption>Combiner: merge saved strategies into one portfolio with shared margin and a common period.</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <div class="card cta">
+   <div><h2>Read the code</h2><p>Engine, analytics, optimiser and UI are all on GitHub.</p></div>
+   <a class="btn btn-primary" href="https://github.com/sanskarmankar/Options-backtesting-engine-" target="_blank" rel="noopener">Open repository</a>
+  </div>
+  <div class="pager" style="margin-top:48px">
+   <span></span>
+   <a class="card next" href="project_4.html"><small>Next →</small><b>Hawkes intraday momentum on NIFTY Next 50</b></a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="site-footer">
+ <div class="wrap">
+  <span>© 2026 Sanskar Mankar · Backtests are shown for research demonstration, not investment advice.</span>
+  <nav aria-label="Footer"><a href="../project.html">Projects</a><a href="../contact.html">Contact</a><a href="https://github.com/sanskarmankar" target="_blank" rel="noopener">GitHub</a><a href="../Sanskar_Mankar_Quant_Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
+ </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/hawkes.js" defer></script>
+</body>
+</html>
